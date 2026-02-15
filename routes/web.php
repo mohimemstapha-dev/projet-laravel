@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})
+->name('home');
 
 // Agences
 Route::GET("/agences",[AgenceController::class,'index'])
