@@ -6,21 +6,28 @@
 <div class="container">
 
     <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="fw-bold text-primary">
+         <h2 class="fw-bold text-primary">
             Détails du Client
         </h2>
-
+    <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <a href="{{ route('clients.index') }}" class="btn btn-secondary">
+            <a href="{{ route('clients.index') }}" class="btn btn-outline-secondary">
                 ← Retour
             </a>
-            <a href="{{ route('clients.edit',$client->id) }}" class="btn btn-warning">
+            <a href="{{ route('clients.edit',$client->id) }}" class="btn btn-outline-warning">
                 Modifier
             </a>
              <a href="{{ route('clients.virements.voir',$client->id) }}"
                 class="btn btn-outline-primary fw-bold px-4">
                     👁 Voir les Virements
+             </a>
+             <a href="{{ route('factures.create',$client->id) }}"
+                class="btn btn-outline-primary fw-bold px-4">
+                   Nouveau paiement
+             </a>
+             <a href="{{ route('clients.factures.historique',$client->id) }}"
+                class="btn btn-outline-primary fw-bold px-4">
+                    Historique des paiements
              </a>
 
         </div>

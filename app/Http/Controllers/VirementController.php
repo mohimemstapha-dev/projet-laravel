@@ -11,8 +11,8 @@ class VirementController extends Controller
     //
     public function index()
     {
-        $virements=Virement::all();
-
+        // $virements=Virement::all();
+        $virements=Virement::paginate(10);
         return view('virments.index',compact('virements'));
     }
     public function create()

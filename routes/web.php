@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgenceController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\FactureController;
 use App\Http\Controllers\VirementController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,3 +60,29 @@ Route::DELETE('/virment/destroy/{virment}',[VirementController::class,'destroy']
 ->name('virments.destroy');
 Route::GET('/virment/show/{virment}',[VirementController::class,'show'])
 ->name('virments.show');
+
+// Facture
+Route::Get('/facture/create/{id}',[FactureController::class,'create'])
+->name('factures.create');
+
+Route::POST("/facture/store/",[FactureController::class,"store"])
+->name('facrures.store');
+
+Route::GET("/facture/edit/{id}",[FactureController::class,"edit"])
+->name('facrures.edit');
+
+Route::PUT("/facture/update/{id}",[FactureController::class,"updateFacture"])
+->name('factures.update');
+
+Route::GET('/clients/{id}/factures', [FactureController::class,'historique'])
+->name('clients.factures.historique');
+
+Route::GET('/client/{id}/show', [FactureController::class,'show'])
+->name('factures.show');
+
+Route::PATCH('/facture/update/{id}',[FactureController::class,"update"])
+->name('factures.update');
+
+Route::DELETE('/facture/destroy/{id}',[FactureController::class,'destroy'])
+->name('factures.destroy');
+

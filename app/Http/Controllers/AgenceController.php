@@ -10,7 +10,9 @@ class AgenceController extends Controller
 {
     public function index()
     {
-        $agences=Agence::all();
+        // $agences=Agence::all();
+
+        $agences = Agence::paginate(10);
         return view('agences.index',compact('agences'));
     }
 

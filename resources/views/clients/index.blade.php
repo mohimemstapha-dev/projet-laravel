@@ -16,29 +16,26 @@
 @endif
 
 <div class="card shadow">
-    <div class="card-body">
-
-        <table class="table table-bordered table-hover table-striped text-center">
+    <div class="card-body table-responsive">
+        <table class="table table-bordered table-hover table-striped text-center align-middle">
             <thead class="table-dark">
                 <tr>
-
                     <th>Nom</th>
                     <th>Prenom</th>
                     <th>Age</th>
                     <th>Solde</th>
                     <th>Agence</th>
-                    <th >Actions</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
             <tbody>
                @forelse ($clients as $client)
                     <tr>
-
                         <td>{{ $client->nom }}</td>
                         <td>{{ $client->prenom }}</td>
                         <td>{{ $client->age }}</td>
-                        <td>{{ $client->solde }}</td>
+                        <td>{{ number_format($client->solde,2) }} DH</td>
                         <td>{{ $client->agence->nom}}</td>
                         <td>
                             <a href="{{ route('clients.show',$client->id) }}" class="btn btn-info btn-sm">Voir</a>
@@ -47,18 +44,22 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Supprimer cette Client ?')">Supprimer</button>
+                                    onclick="return confirm('Supprimer ce client ?')">Supprimer</button>
                             </form>
                         </td>
                     </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="text-center text-muted">Aucune Client trouvée</td>
-                        </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" class="text-center text-muted">Aucun client trouvé</td>
+                    </tr>
                 @endforelse
             </tbody>
-
         </table>
+
+        {{-- Pagination --}}
+        <div class="d-flex justify-content-end mt-3">
+            {{ $clients->links('pagination::bootstrap-5') }}
+        </div>
 
     </div>
 </div>

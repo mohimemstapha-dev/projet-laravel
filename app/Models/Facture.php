@@ -2,15 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Client;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Virement extends Model
+class Facture extends Model
 {
+    /** @use HasFactory<\Database\Factories\FactureFactory> */
     use HasFactory;
-    protected $fillable = ['motif','montant','client_id'];
-
     public function client()
     {
         return $this->belongsTo(Client::class);
